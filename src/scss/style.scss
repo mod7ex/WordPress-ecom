@@ -1,0 +1,30 @@
+@import "base/tailwind";
+@import "base/config";
+
+header {
+	@apply bg-white shadow-xl;
+	.container {
+		@apply p-3 bg-white flex items-center justify-between;
+
+		ul {
+			@apply flex;
+			li {
+				@apply p-3;
+
+				a {
+					@apply text-blue-900;
+					&:hover {
+						@apply text-blue-500;
+					}
+				}
+			}
+		}
+	}
+}
+
+#hero {
+	@apply bg-gray-400 h-96;
+	.container {
+		@apply flex items-center justify-center;
+	}
+}
