@@ -1,24 +1,21 @@
 <?php get_header(); ?>
 
 
-<div id="archive" class="file">
+<div id="woo" class="file">
 
     <div class="container">
 
-        <?php if(have_posts()): ?>
+        <?php get_product_search_form(); ?>
 
-        <?php while(have_posts()): the_post(); ?>
+        <?php if(have_posts()): ?>
 
         <div class="content">
             <?php get_sidebar(); ?>
 
             <div class="post-content">
-                <h1><?php the_title(); ?></h1>
-                <?php the_excerpt(); ?>
+                <?php woocommerce_content(); ?>
             </div>
         </div>
-
-        <?php endwhile; ?>
 
         <?php endif; ?>
 

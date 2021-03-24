@@ -1,0 +1,18 @@
+@mixin bg-img {
+	background: {
+		position: center;
+		repeat: no-repeat;
+		size: cover;
+	}
+}
+
+@mixin flex($justify: center, $align: center) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+@mixin shaddow {
+	border-radius: 2px;
+	box-shadow: 1px 1px 5px 0 rgba($black, 0.3);
+}

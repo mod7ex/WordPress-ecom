@@ -1,20 +1,33 @@
 @import "base/tailwind";
+@import "base/variables";
+@import "base/reset";
+@import "base/mixins";
 @import "base/config";
+@import "base/functions";
 
 header {
-	@apply bg-white shadow-xl;
+	background-color: $white;
+	box-shadow: 0 7px 20px 0 rgba($black, $alpha: 0.5);
+	z-index: 3;
+
 	.container {
-		@apply p-3 bg-white flex items-center justify-between;
+		padding: $base-dim * 7 0;
+		background-color: $white;
+		@include flex(space-between);
+
+		#logo {
+			padding: $base-dim * 3;
+		}
 
 		ul {
-			@apply flex;
+			@include flex(space-between);
 			li {
-				@apply p-3;
+				margin: 0 $base-dim * 3;
 
 				a {
-					@apply text-blue-900;
+					color: $indigo-500;
 					&:hover {
-						@apply text-blue-500;
+						color: $indigo-900;
 					}
 				}
 			}
@@ -23,8 +36,29 @@ header {
 }
 
 #hero {
-	@apply bg-gray-400 h-96;
+	background-color: $gray-200;
+	@include bg-img;
 	.container {
-		@apply flex items-center justify-center;
+		@include flex();
+		color: $white;
+		height: $base-dim * 120;
+	}
+}
+
+#main-footer {
+	background-color: $blueGray-900;
+	color: $blueGray-100;
+
+	padding: $base-dim * 17;
+}
+
+.file {
+	margin: $base-dim * 13;
+	.content {
+		@include flex(space-evenly, flex-start);
+
+		.post-content {
+			padding: $base-dim * 3;
+		}
 	}
 }

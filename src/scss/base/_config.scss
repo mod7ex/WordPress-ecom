@@ -1,15 +1,28 @@
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
-
 .container {
 	margin: 0 auto;
 	max-width: 1024px;
 	width: 100%;
 }
 
-a {
+.container-sm {
+	@extend .container;
+	width: 900px;
+}
+
+.content {
+	padding: $base-dim * 3;
+}
+
+.img {
 	display: inline-block;
+	margin-bottom: $base-dim * 9;
+}
+
+.sidebar {
+	padding: $base-dim * 3;
+	min-width: $base-dim * 50;
+	margin: $base-dim * 3;
+	@include shaddow;
+	position: sticky;
+	top: $base-dim * 3;
 }

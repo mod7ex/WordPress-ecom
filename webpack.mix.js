@@ -11,4 +11,14 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("src/js/main.js", "assets/js/main.js").sass("src/scss/style.scss", "assets/css/style.css");
+mix.js("src/js/main.js", "assets/js/main.js")
+	.sass("src/scss/style.scss", "assets/css/style.css")
+	.options({
+		watchOptions: {
+			ignored: /node_modules/,
+		},
+	});
+
+if (mix.inProduction()) {
+	mix.version();
+}
