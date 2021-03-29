@@ -12,3 +12,20 @@ a {
 ul {
 	list-style: none;
 }
+
+input,
+select {
+	&:focus {
+		outline: none;
+	}
+}
+
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+	}
+}

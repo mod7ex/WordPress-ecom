@@ -38,6 +38,8 @@ add_action('after_setup_theme', function(){
         'admin-head-callback'    => '',
         'admin-preview-callback' => '',
     ));
+
+    unregister_post_type('post');
 });
 
 
@@ -52,7 +54,7 @@ add_action('widgets_init', function() {
         'class'         => 'widget',
         'before_widget' => '<div class="widget-item">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
     ));
 } );

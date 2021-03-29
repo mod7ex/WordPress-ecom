@@ -6,13 +6,40 @@
 	}
 }
 
-@mixin flex($justify: center, $align: center) {
+@mixin flex($justify: center, $direction: row, $align: center, $wrap: nowrap) {
 	display: flex;
 	align-items: $align;
 	justify-content: $justify;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
 }
 
 @mixin shaddow {
 	border-radius: 2px;
 	box-shadow: 1px 1px 5px 0 rgba($black, 0.3);
+}
+
+@mixin btn($border: #1f51ff, $color: $white, $bgc: #1f51ff) {
+	border: 2px solid $border;
+	padding: $base-dim * 3 $base-dim * 5;
+	border-radius: $base-dim;
+	font-weight: bolder;
+	font-size: $base-dim * 6;
+	color: $color;
+	background-color: $bgc;
+
+	&:hover {
+		border: 2px solid $color;
+		color: $bgc;
+		background-color: $color;
+	}
+}
+
+@mixin overlay($percent: 0.5) {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: rgba($gray-900, $percent);
 }

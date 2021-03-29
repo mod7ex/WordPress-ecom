@@ -1,0 +1,72 @@
+.price_slider {
+	margin-bottom: 1em;
+}
+
+.price_slider_amount {
+	text-align: right;
+	line-height: 2.4em;
+	font-size: 0.8751em;
+}
+
+.price_slider_amount .button {
+	font-size: 1.15em;
+}
+
+.price_slider_amount .button {
+	float: left;
+}
+
+.ui-slider {
+	position: relative;
+	text-align: left;
+}
+
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 0.9em;
+	height: 0.9em;
+	border-radius: 50%;
+	border: none;
+	cursor: pointer;
+	background: $red-500;
+	outline: none;
+	top: -0.27em;
+}
+
+.ui-slider .ui-slider-handle:last-child {
+	margin-left: -0.9em;
+}
+
+.ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	font-size: 0.3em;
+	display: block;
+	border: none;
+	background-color: $blue-700;
+	border-radius: 1em;
+}
+
+.price_slider_wrapper .ui-widget-content {
+	border-radius: 1em;
+	background: #1e1e1e;
+}
+
+.ui-slider-horizontal {
+	height: 0.5em;
+	width: 125px;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+
+.ui-slider-horizontal .ui-slider-range-min {
+	left: -1px;
+}
+
+.ui-slider-horizontal .ui-slider-range-max {
+	right: -1px;
+}

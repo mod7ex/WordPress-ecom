@@ -1,16 +1,23 @@
+.hidden {
+	display: none !important;
+}
+
 .container {
 	margin: 0 auto;
 	max-width: 1024px;
 	width: 100%;
 }
 
-.container-sm {
+.container-woo {
 	@extend .container;
-	width: 900px;
+	max-width: 1500px;
+	padding: $base-dim;
 }
 
-.content {
-	padding: $base-dim * 3;
+.container-content {
+	@extend .container;
+	max-width: 1300px;
+	padding: $base-dim;
 }
 
 .img {
@@ -18,11 +25,50 @@
 	margin-bottom: $base-dim * 9;
 }
 
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
 .sidebar {
-	padding: $base-dim * 3;
-	min-width: $base-dim * 50;
-	margin: $base-dim * 3;
+	padding: $base-dim * 5;
 	@include shaddow;
-	position: sticky;
-	top: $base-dim * 3;
+
+	ul {
+		li {
+			margin-bottom: $base-dim * 3;
+		}
+	}
+
+	&.filter {
+		@include flex(space-between, row, "start");
+		margin-bottom: $base-dim * 13;
+		height: $base-dim * 70;
+
+		.widget-item {
+			.widget-title {
+				margin-bottom: $base-dim * 5;
+				font-weight: bold;
+				position: relative;
+				&:before {
+					content: "";
+					position: absolute;
+					padding: $base-dim / 2;
+					width: $base-dim * 20;
+					background-color: $black;
+					top: $base-dim * 8;
+				}
+			}
+
+			a {
+				color: $black;
+				&:hover {
+					color: $cyan-500;
+				}
+			}
+		}
+	}
 }

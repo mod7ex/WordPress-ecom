@@ -5,21 +5,23 @@
     <?php else: ?>
     <div id="hero">
         <?php endif; ?>
-        <div class="container">
-            <h1>Welcome to my shop</h1>
+        <div class="container-content">
+            <div>
+                <h4>SUMMER SALE</h4>
+                <h1>SAVE UP TO 70%</h1>
+                <button>Explore Now</button>
+            </div>
         </div>
     </div>
 
-    <div class="content">
-        <div class="container">
-            <?php if(have_posts()): ?>
-            <?php while(have_posts()): the_post(); ?>
+    <div class="container-content">
+        <?php if(have_posts()): ?>
+        <?php while(have_posts()): the_post(); ?>
 
-            <?php the_content(); ?>
+        <?php the_content(); ?>
 
-            <?php endwhile; ?>
-            <?php endif; ?>
-        </div>
+        <?php endwhile; ?>
+        <?php endif; ?>
     </div>
 
 

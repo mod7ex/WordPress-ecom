@@ -13,8 +13,6 @@
 
 
         <div class="content">
-            <?php get_sidebar(); ?>
-
             <div class="post-content">
                 <h1><?php the_title(); ?></h1>
                 <?php the_content(); ?>

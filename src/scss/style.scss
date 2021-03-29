@@ -4,16 +4,69 @@
 @import "base/mixins";
 @import "base/config";
 @import "base/functions";
+@import "base/woo";
 
 header {
 	background-color: $white;
-	box-shadow: 0 7px 20px 0 rgba($black, $alpha: 0.5);
+	border-bottom: 1px solid $blueGray-300;
 	z-index: 3;
 
-	.container {
-		padding: $base-dim * 7 0;
+	#sm-nav {
+		font-size: $base-dim * 5;
+		background-color: $coolGray-200;
+		color: $coolGray-500;
+		@include flex(space-between);
+		padding: $base-dim $base-dim * 3;
+		a {
+			font-size: $base-dim * 4;
+			color: $coolGray-500;
+			&:hover {
+				color: $cyan-500;
+			}
+		}
+		svg {
+			fill: $coolGray-500;
+		}
+
+		.contact {
+			span {
+				margin: 0 $base-dim * 3;
+				font-size: $base-dim * 4;
+			}
+			@include flex();
+			.contact-item {
+				@include flex();
+			}
+		}
+
+		.lang {
+			select {
+				color: $coolGray-500;
+				background-color: $coolGray-200;
+				padding: $base-dim * 3;
+				border: none;
+			}
+		}
+	}
+
+	.container-woo {
+		padding: $base-dim * 5 $base-dim * 3;
 		background-color: $white;
 		@include flex(space-between);
+
+		a {
+			color: $black;
+			&:hover {
+				color: $cyan-500;
+			}
+		}
+
+		svg {
+			fill: $black;
+			&:hover {
+				fill: $cyan-500;
+			}
+		}
 
 		#logo {
 			padding: $base-dim * 3;
@@ -23,25 +76,145 @@ header {
 			@include flex(space-between);
 			li {
 				margin: 0 $base-dim * 3;
+			}
+		}
+	}
+}
 
-				a {
-					color: $indigo-500;
-					&:hover {
-						color: $indigo-900;
-					}
+#categories {
+	padding: $base-dim * 4;
+	ul {
+		overflow-x: hidden;
+		@include flex();
+		li {
+			text-align: center;
+			margin: 0 $base-dim * 3;
+			a {
+				@include flex();
+				padding: $base-dim $base-dim * 2;
+				border-radius: $base-dim * 3;
+				background-color: $coolGray-200;
+				color: $black;
+				&:hover {
+					color: $cyan-500;
+					background-color: transparent;
 				}
 			}
 		}
 	}
 }
 
-#hero {
-	background-color: $gray-200;
+#category-desc {
+	height: $base-dim * 50;
 	@include bg-img;
-	.container {
+	position: relative;
+	.overlay {
+		@include overlay();
 		@include flex();
 		color: $white;
-		height: $base-dim * 120;
+		text-align: center;
+	}
+}
+
+#hero {
+	background-color: $gray-50;
+	@include bg-img;
+	.container-content {
+		@include flex("start");
+		padding: 0 $base-dim * 3;
+		color: $white;
+		height: $base-dim * 140;
+		div {
+			h4 {
+				font-size: $base-dim * 7;
+				font-weight: bold;
+				margin-bottom: $base-dim * 5;
+			}
+			h1 {
+				font-size: $base-dim * 14;
+				font-weight: bold;
+				margin-bottom: $base-dim * 5;
+			}
+
+			button {
+				@include btn($border: $gray-900, $color: $white, $bgc: $gray-900);
+			}
+		}
+	}
+}
+
+.container-content {
+	.product-nav {
+		@include flex(space-between);
+		padding: $base-dim * 10 0;
+
+		.filter-search {
+			svg {
+				fill: $coolGray-500;
+				&:hover {
+					fill: $cyan-500;
+				}
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+form#orderby {
+	@include flex(center, column-reverse, "end");
+	span {
+		cursor: pointer;
+		padding: $base-dim * 3;
+		font-size: $base-dim * 5;
+		color: $coolGray-500;
+		&:hover {
+			color: $cyan-500;
+		}
+
+		&.active {
+			@include flex();
+			border: 1px solid $coolGray-300;
+			border-radius: $base-dim * 20;
+			padding: $base-dim $base-dim * 3;
+
+			&:hover {
+				border: 1px solid $cyan-500;
+
+				svg {
+					fill: $cyan-500;
+				}
+			}
+
+			svg {
+				fill: $coolGray-500;
+			}
+		}
+	}
+	.dropdown {
+		position: relative;
+		z-index: 10;
+		.select {
+			width: 100%;
+			background-color: $white;
+			position: absolute;
+			top: $base-dim * 5;
+			@include flex(center, column, "start");
+			@include shaddow;
+			border-radius: $base-dim * 1.5;
+
+			.selected {
+				color: $cyan-500;
+			}
+
+			svg {
+				fill: $white;
+				position: absolute;
+				top: -18px;
+				right: 20px;
+				stroke: $coolGray-300;
+				stroke-width: 0.7px;
+			}
+		}
 	}
 }
 
@@ -52,13 +225,39 @@ header {
 	padding: $base-dim * 17;
 }
 
-.file {
-	margin: $base-dim * 13;
-	.content {
-		@include flex(space-evenly, flex-start);
+ul.products {
+	@extend .container-content;
+	width: fit-content !important;
+	@include flex("", row, "start", wrap);
+	li {
+		margin: $base-dim * 5;
+		margin-bottom: $base-dim * 9;
+		a.product-link {
+			div.product-item {
+				@include bg-img;
+				position: relative;
 
-		.post-content {
-			padding: $base-dim * 3;
+				.overlay {
+					padding: $base-dim;
+					.top {
+						position: relative;
+
+						svg {
+							fill: $coolGray-500;
+							&:hover {
+								fill: $cyan-500;
+							}
+						}
+
+						span.onsale {
+							background-color: $orange-700;
+							top: 0;
+							right: 0;
+							left: auto;
+						}
+					}
+				}
+			}
 		}
 	}
 }

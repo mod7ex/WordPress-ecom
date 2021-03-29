@@ -10,3 +10,10 @@
     Requires PHP: 7.0
     Text Domain: wpecom
 */
+
+pre {
+	background-color: black;
+	color: greenyellow;
+	overflow-x: scroll;
+	padding: 3rem;
+}
