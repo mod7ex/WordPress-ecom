@@ -261,3 +261,8 @@ ul.products {
 		}
 	}
 }
+
+.product-container {
+	@extend .container;
+	margin-top: 3rem;
+}
