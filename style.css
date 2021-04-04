@@ -12,11 +12,11 @@
 */
 
 pre {
-	font-weight: bolder;
-	font-size: 1.5rem;
-	background-color: black;
-	color: greenyellow;
-	overflow-x: scroll;
-	padding: 3rem;
-	margin: 1rem;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    background-color: black;
+    color: greenyellow;
+    overflow-x: scroll;
+    padding: 3rem;
+    margin: 1rem;
 }

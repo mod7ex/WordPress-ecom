@@ -17,7 +17,7 @@
 .container-content {
 	@extend .container;
 	max-width: 1300px;
-	padding: $base-dim;
+	padding: $base-dim * 5 !important;
 }
 
 .img {
@@ -44,11 +44,11 @@
 	}
 
 	&.filter {
-		@include flex(space-between, row, "start");
+		@include flex(space-between, row, "start", wrap);
 		margin-bottom: $base-dim * 13;
-		height: $base-dim * 70;
-
 		.widget-item {
+			margin: 0 $base-dim * 5;
+			margin-bottom: $base-dim * 7;
 			.widget-title {
 				margin-bottom: $base-dim * 5;
 				font-weight: bold;
@@ -70,5 +70,34 @@
 				}
 			}
 		}
+	}
+}
+
+
+input, textarea{
+	padding: $base-dim * 3 !important;
+	border: 1px solid rgba($cyan-500, 0.3) !important;
+	min-width: $base-dim * 25 !important;
+	display: inline-block !important;
+	&:focus{
+		outline: none !important;
+		border: 1px solid $cyan-500 !important;
+	}
+}
+
+.select2-selection.select2-selection--single{
+	border: 1px solid $cyan-500 !important;
+	&:focus{
+		outline: none !important;
+		border: 1px solid $cyan-500 !important;
+	}
+}
+
+a{
+	display: inline-block !important;
+	text-decoration: none !important;
+	color: $lightBlue-600;
+	&:hover{
+		color: $lightBlue-900;
 	}
 }

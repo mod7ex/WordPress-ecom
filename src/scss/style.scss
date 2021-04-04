@@ -6,6 +6,7 @@
 @import "base/functions";
 @import "base/woo";
 
+
 header {
 	background-color: $white;
 	border-bottom: 1px solid $blueGray-300;
@@ -83,6 +84,7 @@ header {
 
 #categories {
 	padding: $base-dim * 4;
+	overflow-x: scrol; 
 	ul {
 		overflow-x: hidden;
 		@include flex();
@@ -228,36 +230,116 @@ form#orderby {
 ul.products {
 	@extend .container-content;
 	width: fit-content !important;
-	@include flex("", row, "start", wrap);
+	@include flex(center, row, "start", wrap);
 	li {
-		margin: $base-dim * 5;
+		background-color: $white;
+		@include flex("start", column, flex-start);
+		margin: $base-dim * 5 ;
 		margin-bottom: $base-dim * 9;
-		a.product-link {
-			div.product-item {
-				@include bg-img;
-				position: relative;
+		@include shaddow;
+		padding: $base-dim * 2 ;
 
+		a.product-link {
+			div.product-item {			
+				position: relative;
+				@include bg-img;
+				.onsale{
+					top: -0.5em;
+					left: auto;
+					right: -0.5em;
+				}
 				.overlay {
 					padding: $base-dim;
-					.top {
-						position: relative;
+					background-color: rgba($black, 0.3);
+					@include inner-shaddow;
 
-						svg {
-							fill: $coolGray-500;
-							&:hover {
-								fill: $cyan-500;
-							}
-						}
-
-						span.onsale {
-							background-color: $orange-700;
-							top: 0;
-							right: 0;
-							left: auto;
-						}
+					&:hover{
+						background-color: transparent;
+						box-shadow: none;
 					}
 				}
 			}
+		}
+
+		.prod-title, .star-rating, .price, a.product-link{
+			margin-bottom: $base-dim * 5;
+		}
+
+		.button{
+			padding: $base-dim $base-dim * 2 !important;
+			font-size: $base-dim * 4 !important;
+		}
+
+		.added_to_cart{
+			font-size: $base-dim * 4;
+			color: $black;
+			&:hover{
+				color: $cyan-500
+			}
+		}
+
+		&:hover{
+			.prod-title{
+				color: $cyan-500;
+			}
+			.star-rating{
+				color: $cyan-500;
+			}
+		}
+
+		.prod-title{
+			font-size: $base-dim * 3.5;
+			color: $black;
+		}
+
+		.star-rating{
+			color: $black;
+		}
+	}
+}
+
+.product-main-area{
+	@include shaddow;
+	padding: $base-dim * 5;
+	height: fit-content;
+	@include flex(space-between, row, "start", wrap);
+	margin-top: $base-dim * 10 !important;
+	background-color: $blueGray-100 !important;
+
+	ol.flex-control-nav.flex-control-thumbs{
+		@include flex("start", row, "start", wrap);
+		li{
+			margin: $base-dim * 2 !important;
+			width: 100px !important;
+			@include shaddow;
+		}
+	}
+}
+
+.woocommerce-tabs.wc-tabs-wrapper{
+	background-color: $blueGray-100 !important;
+	@include shaddow;
+	padding: $base-dim * 5;
+	height: fit-content;
+	h2{
+		margin-bottom: $base-dim * 3;
+	}
+}
+
+section.related.products{
+	background-color: $blueGray-100 !important;
+	@include shaddow;
+	padding: $base-dim * 5;
+	height: fit-content;
+	ul.products{
+		padding: $base-dim * 7;
+		width: 100% !important;	
+		justify-content: start !important;
+		li{
+			max-width: fit-content;
+			min-width: fit-content;
+			padding: $base-dim * 2 ;
+			margin: 0 $base-dim * 5 $base-dim * 5 0 !important;
 		}
 	}
 }
@@ -266,3 +348,5 @@ ul.products {
 	@extend .container;
 	margin-top: 3rem;
 }
+
+

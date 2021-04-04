@@ -15,23 +15,26 @@
 }
 
 @mixin shaddow {
-	border-radius: 2px;
-	box-shadow: 1px 1px 5px 0 rgba($black, 0.3);
+	border-radius: 2px !important;
+	box-shadow: 1px 1px 5px 0 rgba($black, 0.3) !important;
+}
+
+@mixin inner-shaddow {
+	box-shadow: inset 5px 5px 13px 0 rgba($black, 0.3);
 }
 
 @mixin btn($border: #1f51ff, $color: $white, $bgc: #1f51ff) {
-	border: 2px solid $border;
-	padding: $base-dim * 3 $base-dim * 5;
-	border-radius: $base-dim;
-	font-weight: bolder;
-	font-size: $base-dim * 6;
-	color: $color;
-	background-color: $bgc;
+	border: 2px solid $border !important;
+	padding: $base-dim * 3 $base-dim * 5 !important;
+	border-radius: $base-dim !important;
+	font-weight: bolder !important;
+	font-size: $base-dim * 6 !important;
+	color: $color !important;
+	background-color: $bgc !important;
 
 	&:hover {
-		border: 2px solid $color;
-		color: $bgc;
-		background-color: $color;
+		color: $bgc !important;
+		background-color: $color !important;
 	}
 }
 
