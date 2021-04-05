@@ -6,7 +6,6 @@
 @import "base/functions";
 @import "base/woo";
 
-
 header {
 	background-color: $white;
 	border-bottom: 1px solid $blueGray-300;
@@ -62,10 +61,34 @@ header {
 			}
 		}
 
-		svg {
-			fill: $black;
-			&:hover {
-				fill: $cyan-500;
+		#svgs {
+			ul {
+				li {
+					&.cart {
+						position: relative;
+						a.modex {
+							@include flex();
+							text-align: center;
+							font-size: $base-dim * 4;
+							position: absolute;
+							background-color: black;
+							color: white;
+							border-radius: 50%;
+							top: -8px;
+							right: -2px;
+							width: $base-dim * 5;
+							height: $base-dim * 5;
+						}
+					}
+				}
+
+				svg {
+					fill: $black;
+					cursor: pointer;
+					&:hover {
+						fill: $cyan-500;
+					}
+				}
 			}
 		}
 
@@ -83,16 +106,40 @@ header {
 }
 
 #categories {
-	padding: $base-dim * 4;
-	overflow-x: scrol; 
+	padding: 0 $base-dim * 4;
 	ul {
-		overflow-x: hidden;
+		padding: $base-dim * 4;
+		overflow-x: scroll;
+		//
+		&::-webkit-scrollbar {
+			height: $base-dim * 3;
+		}
+
+		&::-webkit-scrollbar-button {
+			display: none;
+		}
+
+		&::-webkit-scrollbar-track {
+			box-shadow: none;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: $blueGray-300;
+			outline: none;
+		}
+
+		&::-webkit-scrollbar-corner {
+			border-radius: 11px;
+		}
+		//
+
 		@include flex();
 		li {
 			text-align: center;
 			margin: 0 $base-dim * 3;
 			a {
 				@include flex();
+				min-width: 100px;
 				padding: $base-dim $base-dim * 2;
 				border-radius: $base-dim * 3;
 				background-color: $coolGray-200;
@@ -234,16 +281,16 @@ ul.products {
 	li {
 		background-color: $white;
 		@include flex("start", column, flex-start);
-		margin: $base-dim * 5 ;
+		margin: $base-dim * 5;
 		margin-bottom: $base-dim * 9;
 		@include shaddow;
-		padding: $base-dim * 2 ;
+		padding: $base-dim * 2;
 
 		a.product-link {
-			div.product-item {			
+			div.product-item {
 				position: relative;
 				@include bg-img;
-				.onsale{
+				.onsale {
 					top: -0.5em;
 					left: auto;
 					right: -0.5em;
@@ -253,7 +300,7 @@ ul.products {
 					background-color: rgba($black, 0.3);
 					@include inner-shaddow;
 
-					&:hover{
+					&:hover {
 						background-color: transparent;
 						box-shadow: none;
 					}
@@ -261,44 +308,47 @@ ul.products {
 			}
 		}
 
-		.prod-title, .star-rating, .price, a.product-link{
+		.prod-title,
+		.star-rating,
+		.price,
+		a.product-link {
 			margin-bottom: $base-dim * 5;
 		}
 
-		.button{
+		.button {
 			padding: $base-dim $base-dim * 2 !important;
 			font-size: $base-dim * 4 !important;
 		}
 
-		.added_to_cart{
+		.added_to_cart {
 			font-size: $base-dim * 4;
 			color: $black;
-			&:hover{
-				color: $cyan-500
-			}
-		}
-
-		&:hover{
-			.prod-title{
-				color: $cyan-500;
-			}
-			.star-rating{
+			&:hover {
 				color: $cyan-500;
 			}
 		}
 
-		.prod-title{
+		&:hover {
+			.prod-title {
+				color: $cyan-500;
+			}
+			.star-rating {
+				color: $cyan-500;
+			}
+		}
+
+		.prod-title {
 			font-size: $base-dim * 3.5;
 			color: $black;
 		}
 
-		.star-rating{
+		.star-rating {
 			color: $black;
 		}
 	}
 }
 
-.product-main-area{
+.product-main-area {
 	@include shaddow;
 	padding: $base-dim * 5;
 	height: fit-content;
@@ -306,9 +356,9 @@ ul.products {
 	margin-top: $base-dim * 10 !important;
 	background-color: $blueGray-100 !important;
 
-	ol.flex-control-nav.flex-control-thumbs{
+	ol.flex-control-nav.flex-control-thumbs {
 		@include flex("start", row, "start", wrap);
-		li{
+		li {
 			margin: $base-dim * 2 !important;
 			width: 100px !important;
 			@include shaddow;
@@ -316,29 +366,29 @@ ul.products {
 	}
 }
 
-.woocommerce-tabs.wc-tabs-wrapper{
+.woocommerce-tabs.wc-tabs-wrapper {
 	background-color: $blueGray-100 !important;
 	@include shaddow;
 	padding: $base-dim * 5;
 	height: fit-content;
-	h2{
+	h2 {
 		margin-bottom: $base-dim * 3;
 	}
 }
 
-section.related.products{
+section.related.products {
 	background-color: $blueGray-100 !important;
 	@include shaddow;
 	padding: $base-dim * 5;
 	height: fit-content;
-	ul.products{
+	ul.products {
 		padding: $base-dim * 7;
-		width: 100% !important;	
+		width: 100% !important;
 		justify-content: start !important;
-		li{
+		li {
 			max-width: fit-content;
 			min-width: fit-content;
-			padding: $base-dim * 2 ;
+			padding: $base-dim * 2;
 			margin: 0 $base-dim * 5 $base-dim * 5 0 !important;
 		}
 	}
@@ -348,5 +398,3 @@ section.related.products{
 	@extend .container;
 	margin-top: 3rem;
 }
-
-

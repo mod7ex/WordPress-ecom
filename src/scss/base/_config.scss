@@ -18,6 +18,21 @@
 	@extend .container;
 	max-width: 1300px;
 	padding: $base-dim * 5 !important;
+	margin-bottom: $base-dim * 15;
+
+	input,
+	textarea,
+	select {
+		margin: $base-dim * 2;
+		padding: $base-dim * 3 !important;
+		border: 1px solid rgba($cyan-500, 0.3) !important;
+		min-width: $base-dim * 25 !important;
+		display: inline-block !important;
+		&:focus {
+			outline: none !important;
+			border: 1px solid $cyan-500 !important;
+		}
+	}
 }
 
 .img {
@@ -73,31 +88,25 @@
 	}
 }
 
-
-input, textarea{
-	padding: $base-dim * 3 !important;
-	border: 1px solid rgba($cyan-500, 0.3) !important;
-	min-width: $base-dim * 25 !important;
-	display: inline-block !important;
-	&:focus{
-		outline: none !important;
-		border: 1px solid $cyan-500 !important;
-	}
-}
-
-.select2-selection.select2-selection--single{
+.select2-selection.select2-selection--single {
 	border: 1px solid $cyan-500 !important;
-	&:focus{
+	&:focus {
 		outline: none !important;
 		border: 1px solid $cyan-500 !important;
 	}
 }
 
-a{
+a {
 	display: inline-block !important;
 	text-decoration: none !important;
 	color: $lightBlue-600;
-	&:hover{
+	&:hover {
 		color: $lightBlue-900;
 	}
+}
+
+h2,
+h3,
+h1 {
+	margin-bottom: $base-dim * 7;
 }

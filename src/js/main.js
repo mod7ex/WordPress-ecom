@@ -2,9 +2,9 @@ let orderbyForm = document.querySelector("form#orderby");
 let searchFilter = document.querySelector(".filter-search svg");
 
 if (orderbyForm) {
-	orderbyForm.querySelector(".active").addEventListener("click", () => {
-		let select = orderbyForm.querySelector(".select");
+	let select = orderbyForm.querySelector(".select");
 
+	orderbyForm.querySelector(".active").addEventListener("click", () => {
 		select.classList.toggle("hidden");
 
 		select.querySelectorAll("span").forEach((span) => {
@@ -13,6 +13,13 @@ if (orderbyForm) {
 				orderbyForm.submit();
 			});
 		});
+	});
+
+	document.addEventListener('click', (e)=>{
+		let elm = e.target;
+		if(!orderbyForm.contains(elm)){
+			select.classList.add("hidden");
+		}
 	});
 }
 

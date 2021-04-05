@@ -1,12 +1,11 @@
-.button{
+.button {
 	@include btn($cyan-500, $white, $cyan-500);
 }
 
 /* ***************************************************************************************************** */
 
 .price_slider_amount {
-
-	input{
+	input {
 		display: none !important;
 	}
 	.button {
@@ -15,7 +14,7 @@
 		font-size: $base-dim * 4 !important;
 		display: block !important;
 	}
-	.price_label{
+	.price_label {
 		font-size: $base-dim * 4;
 	}
 }
@@ -23,109 +22,153 @@
 .price_slider_wrapper {
 	width: 110px;
 	.ui-slider.price_slider.ui-widget-content.ui-slider-horizontal {
-		height:.5em ;
+		height: 0.5em;
 		width: 100%;
-		margin: 1em 0 ;
-		position: relative ;
-		text-align: left ;
+		margin: 1em 0;
+		position: relative;
+		text-align: left;
 		background-color: $blueGray-900;
-		border-radius: 11px ;
+		border-radius: 11px;
 
 		.ui-slider-range {
-			position: absolute ;
-			top: 0 ;
-			height: 100% ;
-			z-index: 1 ;
-			font-size: .7em ;
-			display: block ;
-			border: none; ;
-			background-color: $blueGray-400 ;
-			box-shadow: 1px 1px 1px 0.5px rgba(0, 0, 0, 0.25) inset ;
-			border-radius: 11px ;
+			position: absolute;
+			top: 0;
+			height: 100%;
+			z-index: 1;
+			font-size: 0.7em;
+			display: block;
+			border: none;
+			background-color: $blueGray-400;
+			box-shadow: 1px 1px 1px 0.5px rgba(0, 0, 0, 0.25) inset;
+			border-radius: 11px;
 		}
 
 		.ui-slider-handle {
-			position: absolute ;
-			z-index: 2 ;
-			width: 0.9em ;
-			height: 0.9em ;
-			border-radius: 11px ;
-			border: 1px solid rgba(0, 0, 0, 0.25) ;
-			cursor: pointer ;
-			background-color: $blueGray-400 ;
-			outline: none ;
-			top: 0 ;
-			bottom: 0 ;
+			position: absolute;
+			z-index: 2;
+			width: 0.9em;
+			height: 0.9em;
+			border-radius: 11px;
+			border: 1px solid rgba(0, 0, 0, 0.25);
+			cursor: pointer;
+			background-color: $blueGray-400;
+			outline: none;
+			top: 0;
+			bottom: 0;
 			margin: auto 0;
-			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.65) inset ;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.65) inset;
 			margin-left: -7px;
 		}
 	}
 }
 
-
-
 /* ********************************************************************************************************* */
 
-.woocommerce-form-coupon-toggle{
-	.woocommerce-info{
-		border-top-color:  $cyan-500;
+.woocommerce-form-coupon-toggle {
+	.woocommerce-info {
+		border-top-color: $cyan-500;
 	}
 }
 
-.woocommerce-message{
-	border-top-color:  $cyan-500;
+.woocommerce-message {
+	border-top-color: $cyan-500;
 }
 
-nav.woocommerce-breadcrumb{
-	margin-top :$base-dim * 5 !important;
-	margin-bottom :$base-dim * 5 !important;
-	a{
+nav.woocommerce-breadcrumb {
+	margin-top: $base-dim * 5 !important;
+	margin-bottom: $base-dim * 5 !important;
+	a {
 		color: $black;
-		&:hover{
+		&:hover {
 			color: $cyan-500;
 		}
 	}
 }
 
-.woocommerce-tabs, .summary, .product-main-area{
+.woocommerce-tabs,
+.summary,
+.product-main-area {
 	margin-bottom: $base-dim * 10 !important;
 }
 
-.woocommerce-product-gallery{
+.woocommerce-product-gallery {
 	float: none !important;
 }
 
-.onsale{
+.onsale {
 	background-color: $cyan-500 !important;
 }
 
-.summary.entry-summary{
-	.product_title.entry-title, .price, .woocommerce-product-details__short-description, form.cart.grouped_form, .product_meta{
+.summary.entry-summary {
+	.product_title.entry-title,
+	.price,
+	.woocommerce-product-details__short-description,
+	form.cart.grouped_form,
+	.product_meta {
 		margin-bottom: $base-dim * 10 !important;
 	}
 }
 
-.price{
-	.amount{
+.price {
+	.amount {
 		font-weight: lighter !important;
 		color: $red-600 !important;
 	}
-	ins{
+	ins {
 		color: $red-600 !important;
-		.amount.woocommerce-Price-amount{
+		.amount.woocommerce-Price-amount {
 			color: $red-600 !important;
 		}
 	}
-	del .amount.woocommerce-Price-amount{
+	del .amount.woocommerce-Price-amount {
 		color: $blueGray-500 !important;
 	}
 }
 
-.star-rating, .stars{
-	color: #F8B704 !important;
+.star-rating,
+.stars {
+	color: #f8b704 !important;
 
-	&:hover{
-		color: #F8B704 !important;
+	&:hover {
+		color: #f8b704 !important;
+	}
+}
+
+.woocommerce-products-header {
+	border: none !important;
+}
+
+#coupon_code {
+	min-width: 111px !important;
+}
+
+#customer_details,
+#order_review {
+	@include shaddow;
+	padding: $base-dim * 5;
+	margin-bottom: $base-dim * 25;
+	background-color: $blueGray-50;
+}
+
+.container-content {
+	h1 + .woocommerce {
+		// @include flex("space-between", row, "start");
+
+		.woocommerce-MyAccount-navigation,
+		.woocommerce-MyAccount-content {
+			@include shaddow;
+			padding: $base-dim * 5;
+			margin: $base-dim * 5;
+			background-color: $blueGray-50;
+			display: block !important;
+		}
+
+		.woocommerce-MyAccount-navigation {
+			flex-basis: 0;
+		}
+
+		.woocommerce-MyAccount-content {
+			flex-basis: 1;
+		}
 	}
 }

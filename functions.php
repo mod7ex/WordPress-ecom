@@ -20,6 +20,8 @@ require_once(AP . 'inc/enqueue.php');
 
 require_once(AP . 'inc/theme-support.php');
 
+require_once(AP . 'inc/cleaner.php');
+
 if(class_exists('WooCommerce')) {
 
     require_once(AP . 'inc/woo/woo.php');
