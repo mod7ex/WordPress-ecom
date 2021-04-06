@@ -398,3 +398,48 @@ section.related.products {
 	@extend .container;
 	margin-top: 3rem;
 }
+
+#custom-product-search {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 10;
+	@include flex();
+
+	#searchForm {
+		background-color: white;
+		padding: 60px 80px;
+		margin: auto;
+		border-radius: 11px;
+		position: relative;
+
+		.close {
+			position: absolute;
+			top: -20px;
+			right: -20px;
+			background-color: white;
+			color: red !important;
+			padding: $base-dim;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+
+		input {
+			padding: $base-dim * 4;
+			border: 1px solid $cyan-500;
+			border-radius: 50px;
+			&:focus {
+				outline: none;
+				border: 1px solid $cyan-800;
+			}
+		}
+
+		button {
+			@extend .button;
+			padding: $base-dim * 2.5 !important;
+		}
+	}
+}

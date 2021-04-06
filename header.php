@@ -19,6 +19,8 @@
 
 <body <?php body_class(); ?>>
 
+    <?php require_once('searchform.php'); ?>
+
     <header>
         <div id="sm-nav">
             <div class="contact">
@@ -27,7 +29,7 @@
                         <path
                             d="M6.176 1.322l2.844-1.322 4.041 7.89-2.724 1.341c-.538 1.259 2.159 6.289 3.297 6.372.09-.058 2.671-1.328 2.671-1.328l4.11 7.932s-2.764 1.354-2.854 1.396c-7.862 3.591-19.103-18.258-11.385-22.281zm1.929 1.274l-1.023.504c-5.294 2.762 4.177 21.185 9.648 18.686l.971-.474-2.271-4.383-1.026.5c-3.163 1.547-8.262-8.219-5.055-9.938l1.007-.497-2.251-4.398z" />
                     </svg>
-                    <span><?php echo WC_Admin_Settings::get_option( 'woocommerce_store_phone', '' ); ?></span>
+                    <span><?php echo WC_Admin_Settings::get_option( 'woocommerce_store_phone', null); ?></span>
                 </span>
 
                 <a href="mailto:Kalles@domain.com" class="contact-item">
@@ -35,7 +37,7 @@
                         <path
                             d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z" />
                     </svg>
-                    <span><?php echo WC_Admin_Settings::get_option('woocommerce_store_email'); ?></span>
+                    <span><?php echo WC_Admin_Settings::get_option('woocommerce_store_email', null); ?></span>
                 </a>
             </div>
 
@@ -45,11 +47,25 @@
             </div>
 
             <div class="lang">
-                <select name="" id="">
-                    <option value="us" selected>us</option>
-                    <option value="fr">fr</option>
-                    <option value="ar">ar</option>
-                </select>
+
+                <?php
+                    $langs = get_available_languages();
+                    $langs[] = 'en_US';
+                    $curr_lang = get_locale();
+                ?>
+
+                <form action="" method="GET" id="lang_switcher">
+                    <input type="hidden" name="action" value="change_lang_action">
+                    <?php wp_nonce_field('change_lang_action', '_change_lang_nonce'); ?>
+
+                    <select name="lang">
+                        <?php foreach ($langs as $key => $lang): ?>
+                        <option <?php echo ($curr_lang === $lang) ? 'selected' : ''; ?> value="<?php echo $lang; ?>">
+                            <?php echo str_replace('_', ' ', $lang); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </form>
+
             </div>
         </div>
 
@@ -86,13 +102,6 @@
                         </svg>
                     </li>
 
-                    <li class="wish">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24">
-                            <path
-                                d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z" />
-                        </svg>
-                    </li>
-
                     <li class="user">
                         <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>">
 
@@ -102,6 +111,13 @@
                             </svg>
 
                         </a>
+                    </li>
+
+                    <li class="wish">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24">
+                            <path
+                                d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z" />
+                        </svg>
                     </li>
 
                     <li class="cart">

@@ -1,5 +1,6 @@
 <?php
 
+
 // Theme Support
 add_theme_support('woocommerce');
 
@@ -106,17 +107,35 @@ echo ob_get_clean();
 
 
 add_action( 'wp_loaded', function () {
-    if(isset($_GET['_clear_cart_nonce']) && !WC()->cart->is_empty()){
+    if(isset($_GET['_clear_cart_nonce']) && !WC()->cart->is_empty() && isset( $_GET['clear_cart_content'] )){
 
         if(!wp_verify_nonce($_GET['_clear_cart_nonce'], 'clear_cart_action')) {
             wc_add_notice( 'Some thing Went Wrong please try later!', 'error' );
             return;
         }
         
-        if ( isset( $_GET['clear_cart_content'] ) &&  $_GET['clear_cart_content'] == 'clear' ) {
+        if ($_GET['clear_cart_content'] == 'clear' ) {
             WC()->cart->empty_cart();
         }
+    }
+
+
+
+    if(isset($_GET['_change_lang_nonce']) && isset($_GET['lang'])){
         
+        if(wp_verify_nonce($_GET['_change_lang_nonce'], 'change_lang_action', false)) {
+        
+            if(switch_to_locale( $_GET['lang'] )){
+                wc_add_notice(__('Language changed with success'), 'success' );
+            }else{
+                wc_add_notice(__( 'Some thing Went Wrong please try later!'), 'error' );
+            }
+
+        }else{
+            wc_add_notice(__( 'Some thing Went Wrong please try later!'), 'error' );
+        }
+
+        wp_safe_redirect(wp_get_referer());
     }
 });
 
@@ -136,7 +155,7 @@ add_filter('woocommerce_general_settings', function ($settings) {
                 'id'       => 'woocommerce_store_phone',
                 'default'  => '',
                 'type'     => 'text',
-                'desc_tip' => true, // or false
+                'desc_tip' => true,
             );
             $key++;
 
@@ -146,7 +165,7 @@ add_filter('woocommerce_general_settings', function ($settings) {
                 'id'       => 'woocommerce_store_email',
                 'default'  => '',
                 'type'     => 'email',
-                'desc_tip' => true, // or false
+                'desc_tip' => true,
             );
             $key++;
         }
